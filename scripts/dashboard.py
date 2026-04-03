@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-dataset = pd.read_csv(r"C:\Users\Shreya patel\OneDrive\Desktop\Trae\Sales-Data-Analysis\data\train.csv")
+dataset = pd.read_csv(r"C:\Users\Shreya patel\OneDrive\Desktop\Trae\Sales-Data-Analysis\data\train.csv", encoding="latin1")
 
 dataset.info()
 dataset.isnull().sum()
@@ -13,41 +13,48 @@ dataset.describe()
 
 dataset["Category"].value_counts()
 
+# Insight 1
 dataset.groupby("Category")["Sales"].sum().plot(kind="bar")
 plt.title("Sales by Category")
 plt.xlabel("Category")
 plt.ylabel("Sales")
 plt.show()
 
+# Insight 2
 dataset.groupby("Region")["Sales"].sum().plot(kind="pie",autopct='%1.1f%%')
 plt.title("Sales by Region")
 plt.ylabel("")
 plt.show()
 
+# Insight 3
 dataset.groupby("Month")["Sales"].sum().plot(kind="line")
 plt.title("Monthly Sales Trend")
 plt.xlabel("Month")
 plt.ylabel("Sales")
 plt.show()
 
+# Insight 4
 dataset.groupby("Ship Mode")["Sales"].sum().plot(kind="bar")
 plt.title("Sales by Ship Mode")
 plt.xlabel("Ship Mode")
 plt.ylabel("Sales")
 plt.show()
 
+# Insight 5
 dataset.groupby("Sub-Category")["Sales"].sum().sort_values().plot(kind="barh")
 plt.title("Sales by Sub-Category")
 plt.xlabel("Sales")
 plt.ylabel("Sub-Category")
 plt.show()
 
+# Insight 6
 dataset.groupby("State")["Sales"].sum().sort_values(ascending=False).head(10).plot(kind="bar")
 plt.title("Top 10 Sales by State")
 plt.xlabel("State")
 plt.ylabel("Sales")
 plt.show()
 
+# Insight 6
 dataset.groupby("Segment")["Sales"].sum().plot(kind="bar")
 plt.title("Sales by Segment")
 plt.xlabel("Segment")
